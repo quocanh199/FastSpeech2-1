@@ -138,3 +138,10 @@ Please inform me if you find any mistake in this repo, or any useful tip to trai
 - [TensorSpeech's FastSpeech2 implementation](https://github.com/TensorSpeech/TensorflowTTS)
 - [NVIDIA's WaveGlow implementation](https://github.com/NVIDIA/waveglow)
 - [seungwonpark's MelGAN implementation](https://github.com/seungwonpark/melgan)
+# FastSpeech2
+# FastSpeech2
+# FastSpeech2
+# FastSpeech2
+# FastSpeech2
+# FastSpeech2
+# FastSpeech2IMQ

@@ -2,7 +2,7 @@ import os
 
 # Dataset
 dataset = "LJSpeech"
-data_path = "/home/ming/Data/Raw/LJSpeech-1.1"
+data_path = "./data/LJSpeech-1.1/"
 #dataset = "Blizzard2013"
 #data_path = "./Blizzard-2013/train/segmented/"
 

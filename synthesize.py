@@ -14,6 +14,7 @@ import utils
 import audio as Audio
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+# device = torch.device('cpu')
 
 def preprocess(text):
     text = text.rstrip(punctuation)
@@ -64,26 +65,26 @@ def synthesize(model, waveglow, melgan, text, sentence, prefix=''):
     
     utils.plot_data([(mel_postnet.numpy(), f0_output, energy_output)], ['Synthesized Spectrogram'], filename=os.path.join(hp.test_path, '{}_{}.png'.format(prefix, sentence)))
 
-
 if __name__ == "__main__":
     # Test
     parser = argparse.ArgumentParser()
     parser.add_argument('--step', type=int, default=30000)
     args = parser.parse_args()
     
-    sentences = [
-        "Advanced text to speech models such as Fast Speech can synthesize speech significantly faster than previous auto regressive models with comparable quality. The training of Fast Speech model relies on an auto regressive teacher model for duration prediction and knowledge distillation, which can ease the one to many mapping problem in T T S. However, Fast Speech has several disadvantages, 1, the teacher student distillation pipeline is complicated, 2, the duration extracted from the teacher model is not accurate enough, and the target mel spectrograms distilled from teacher model suffer from information loss due to data simplification, both of which limit the voice quality.",
-        "Printing, in the only sense with which we are at present concerned, differs from most if not from all the arts and crafts represented in the Exhibition",
-        "in being comparatively modern.",
-        "For although the Chinese took impressions from wood blocks engraved in relief for centuries before the woodcutters of the Netherlands, by a similar process",
-        "produced the block books, which were the immediate predecessors of the true printed book,",
-        "the invention of movable metal letters in the middle of the fifteenth century may justly be considered as the invention of the art of printing.",
-        "And it is worth mention in passing that, as an example of fine typography,",
-        "the earliest book printed with movable types, the Gutenberg, or \"forty-two line Bible\" of about 1455,",
-        "has never been surpassed.",
-        "Printing, then, for our purpose, may be considered as the art of making books by means of movable types.",
-        "Now, as all books not primarily intended as picture-books consist principally of types composed to form letterpress,"
-        ]
+    # sentences = [
+    #     "Advanced text to speech models such as Fast Speech can synthesize speech significantly faster than previous auto regressive models with comparable quality. The training of Fast Speech model relies on an auto regressive teacher model for duration prediction and knowledge distillation, which can ease the one to many mapping problem in T T S. However, Fast Speech has several disadvantages, 1, the teacher student distillation pipeline is complicated, 2, the duration extracted from the teacher model is not accurate enough, and the target mel spectrograms distilled from teacher model suffer from information loss due to data simplification, both of which limit the voice quality.",
+    #     "Printing, in the only sense with which we are at present concerned, differs from most if not from all the arts and crafts represented in the Exhibition",
+    #     "in being comparatively modern.",
+    #     "For although the Chinese took impressions from wood blocks engraved in relief for centuries before the woodcutters of the Netherlands, by a similar process",
+    #     "produced the block books, which were the immediate predecessors of the true printed book,",
+    #     "the invention of movable metal letters in the middle of the fifteenth century may justly be considered as the invention of the art of printing.",
+    #     "And it is worth mention in passing that, as an example of fine typography,",
+    #     "the earliest book printed with movable types, the Gutenberg, or \"forty-two line Bible\" of about 1455,",
+    #     "has never been surpassed.",
+    #     "Printing, then, for our purpose, may be considered as the art of making books by means of movable types.",
+    #     "Now, as all books not primarily intended as picture-books consist principally of types composed to form letterpress,"
+    #     ]
+    sentences = ["Yo fucker, are you crazy you got damn motherfucker hell shit you are"]
 
     model = get_FastSpeech2(args.step).to(device)
     melgan = waveglow = None
