@@ -1,8 +1,10 @@
 import os
 
 # Dataset
-dataset = "LJSpeech"
-data_path = "./data/LJSpeech-1.1/"
+# dataset = "LJSpeech"
+# data_path = "./data/LJSpeech-1.1/"
+dataset = "HaPhuong"
+data_path = "./data/HaPhuong/"
 #dataset = "Blizzard2013"
 #data_path = "./Blizzard-2013/train/segmented/"
 
@@ -86,7 +88,6 @@ weight_decay = 0.
 
 # Vocoder
 vocoder = 'melgan' # 'waveglow' or 'melgan'
-
 
 # Log-scaled duration
 log_offset = 1.
