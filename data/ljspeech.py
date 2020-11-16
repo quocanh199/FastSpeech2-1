@@ -14,7 +14,7 @@ def prepare_align(in_dir):
         for line in f:
             parts = line.strip().split('|')
             basename = parts[0].split('/')[-1]
-            text = parts[-1]q
+            text = parts[-1]
             text = _clean_text(text, hp.text_cleaners)
             
             with open(os.path.join(in_dir, 'wav', '{}.txt'.format(basename)), 'w') as f1:
