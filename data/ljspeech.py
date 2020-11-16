@@ -13,11 +13,11 @@ def prepare_align(in_dir):
     with open(os.path.join(in_dir, 'metadata.csv'), encoding='utf-8') as f:
         for line in f:
             parts = line.strip().split('|')
-            basename = parts[0]
-            text = parts[2]
+            basename = parts[0].split('/')[-1]
+            text = parts[-1]q
             text = _clean_text(text, hp.text_cleaners)
             
-            with open(os.path.join(in_dir, 'wavs', '{}.txt'.format(basename)), 'w') as f1:
+            with open(os.path.join(in_dir, 'wav', '{}.txt'.format(basename)), 'w') as f1:
                 f1.write(text)
 
 def build_from_path(in_dir, out_dir):
@@ -30,8 +30,8 @@ def build_from_path(in_dir, out_dir):
     with open(os.path.join(in_dir, 'metadata.csv'), encoding='utf-8') as f:
         for line in f:
             parts = line.strip().split('|')
-            basename = parts[0]
-            text = parts[2]
+            basename = parts[0].split('/')[-1]
+            text = parts[-1]
             
             ret = process_utterance(in_dir, out_dir, basename)
             if ret is None:
@@ -68,7 +68,7 @@ def build_from_path(in_dir, out_dir):
     return [r for r in train if r is not None], [r for r in val if r is not None]
 
 def process_utterance(in_dir, out_dir, basename):
-    wav_path = os.path.join(in_dir, 'wavs', '{}.wav'.format(basename))
+    wav_path = os.path.join(in_dir, 'wav', '{}.wav'.format(basename))
     tg_path = os.path.join(out_dir, 'TextGrid', '{}.TextGrid'.format(basename)) 
     
     # Get alignments
