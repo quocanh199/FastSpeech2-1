@@ -30,7 +30,7 @@ def main():
         train, val = ljspeech.build_from_path(in_dir, out_dir)
     if hp.dataset == "Blizzard2013":
         train, val = blizzard2013.build_from_path(in_dir, out_dir)
-    ljspeech.build_from_path(in_dir, out_dir)
+    train,val = ljspeech.build_from_path(in_dir, out_dir)
     write_metadata(train, val, out_dir)
     
 if __name__ == "__main__":
