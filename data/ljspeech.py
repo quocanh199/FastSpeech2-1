@@ -13,9 +13,8 @@ def prepare_align(in_dir):
     with open(os.path.join(in_dir, 'metadata.csv'), encoding='utf-8') as f:
         for line in f:
             parts = line.strip().split('|')
-            basename = parts[0].split('/')[-1]
+            basename = parts[0].split('/')[-1].split('.')[0]
             text = parts[-1]
-            text = _clean_text(text, hp.text_cleaners)
             
             with open(os.path.join(in_dir, 'wav', '{}.txt'.format(basename)), 'w') as f1:
                 f1.write(text)
